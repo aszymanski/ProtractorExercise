@@ -13,7 +13,6 @@
 	  var playButton = element(by.xpath("//button[text()='Play Now']"));
 	  var search = element(by.xpath("//i[@class='fa fa-search']"))
 	  var searchBox = element(by.xpath("//div[@class='search-input__input-wrapper']/input"));
-	  var moreButton = element(by.xpath("//img[@alt='Mayfair Roulette']//ancestor::div[@class='tile vegas-tile tile--active tile--expandable']/div[@class='tile__content']//button[contains(@class,'o-btn--more')]"));
 	  var loginBoxHeader = element(by.xpath("//h5[text()='Login']"));
 	  
       landingPage.search = function(gameName) {
@@ -28,6 +27,7 @@
 		browser.driver.sleep(4000);
 		browser.actions().mouseMove(element(by.xpath(gameTile))).perform();
         browser.driver.sleep(2000);
+		var moreButton = element(by.xpath("//img[@alt='" + gameName + "']//ancestor::div[@class='tile vegas-tile tile--active tile--expandable']/div[@class='tile__content']//button[contains(@class,'o-btn--more')]"));
 		waitForElement(moreButton);
 		moreButton.click();
 		return new LandingPage()
